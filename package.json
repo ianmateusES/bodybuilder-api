@@ -16,7 +16,8 @@
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
     "lint": "eslint src --ext ts,tsx",
-    "lint-correction": "eslint src --fix --ext ts,tsx"
+    "lint-correction": "eslint src --fix --ext ts,tsx",
+    "test": "jest"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
