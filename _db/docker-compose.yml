@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  regis:
+    image: 'redis:alpine'
+    container_name: redis-bodybuilder
+    ports:
+      - '6379:6379'
+    # volumes:
+    #   -  $HOME/dataset/bodybuilder/redis:/usr/local/etc/redi

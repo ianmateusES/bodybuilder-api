@@ -3,9 +3,12 @@ import cors from 'cors';
 import express, { Request, Response, NextFunction } from 'express';
 
 import { AppError } from '../../errors/AppError';
+import { rateLimiter } from './middleware/rateLimiter';
 import { routes } from './routes';
 
 const app = express();
+
+app.use(rateLimiter);
 
 app.use(express.json());
 app.use(cors());
