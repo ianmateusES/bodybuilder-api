@@ -1,3 +1,6 @@
+import 'dotenv/config';
+import 'express-async-errors';
+
 import { errors } from 'celebrate';
 import cors from 'cors';
 import express, { Request, Response, NextFunction } from 'express';
@@ -26,7 +29,7 @@ app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
   }
 
   // eslint-disable-next-line no-console
-  console.log(err);
+  console.error(err);
 
   return res.status(500).json({
     status: 'error',
