@@ -1,9 +1,12 @@
+import 'reflect-metadata';
 import 'dotenv/config';
 import 'express-async-errors';
 
 import { errors } from 'celebrate';
 import cors from 'cors';
 import express, { Request, Response, NextFunction } from 'express';
+
+import '@shared/infra/typeorm';
 
 import { AppError } from '../../errors/AppError';
 import { rateLimiter } from './middleware/rateLimiter';

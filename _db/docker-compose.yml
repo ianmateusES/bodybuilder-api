@@ -1,6 +1,26 @@
 version: '3'
 
 services:
+  postgres:
+    image: 'postgres:13-alpine'
+    container_name: postgresdb-bodybuilder
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: "bodybuilder"
+      POSTGRES_PASSWORD: "8d1e6552d4e4717997a69f25feef2d24"
+      POSTGRES_DB: "bodybuilder"
+    # volumes:
+    #   - $HOME/dataset/bodybuilder/postgres:/var/lib/postgresql/data
+
+  mongo:
+    image: 'mongo'
+    container_name: mongo-bodybuilder
+    ports:
+      - '27017:27017'
+    # volumes:
+    #   -  $HOME/dataset/bodybuilder/mongo:/data/db
+
   regis:
     image: 'redis:alpine'
     container_name: redis-bodybuilder
