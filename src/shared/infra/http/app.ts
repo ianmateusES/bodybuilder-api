@@ -7,6 +7,7 @@ import cors from 'cors';
 import express, { Request, Response, NextFunction } from 'express';
 
 import '@shared/infra/typeorm';
+import '@shared/container';
 
 import { AppError } from '../../errors/AppError';
 import { rateLimiter } from './middleware/rateLimiter';

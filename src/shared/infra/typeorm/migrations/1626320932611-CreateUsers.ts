@@ -31,6 +31,10 @@ export class CreateUsers1626320932611 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'birthday',
+            type: 'timestamp',
+          },
+          {
             name: 'user_type',
             type: 'enum',
             enum: ['personal', 'nutritionist', 'student'],

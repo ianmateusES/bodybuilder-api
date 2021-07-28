@@ -20,7 +20,7 @@ export class CreatePersonals1626322594631 implements MigrationInterface {
           {
             name: 'user_id',
             type: 'uuid',
-            isUnique: true,
+            isNullable: true,
           },
           {
             name: 'created_at',

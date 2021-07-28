@@ -24,7 +24,6 @@ export class CreateAddresses1626321714692 implements MigrationInterface {
           {
             name: 'district',
             type: 'varchar',
-            isUnique: true,
           },
           {
             name: 'city',
@@ -33,7 +32,10 @@ export class CreateAddresses1626321714692 implements MigrationInterface {
           {
             name: 'uf',
             type: 'varchar(2)',
-            isUnique: true,
+          },
+          {
+            name: 'cep',
+            type: 'varchar',
           },
           {
             name: 'created_at',
