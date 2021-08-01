@@ -1,7 +1,7 @@
-import { ICreatePersonalDTO } from '@modules/personals/dtos/ICreatePersonalDTO';
-import { Personal } from '@modules/personals/infra/typeorm/entities/Personal';
 import { IUserRepository } from '@modules/users/repositories/IUserRepository';
 
+import { ICreatePersonalDTO } from '../../dtos/ICreatePersonalDTO';
+import { Personal } from '../../infra/typeorm/entities/Personal';
 import { IPersonalRepository } from '../IPersonalRepository';
 
 class PersonalRepositoryInMemory implements IPersonalRepository {

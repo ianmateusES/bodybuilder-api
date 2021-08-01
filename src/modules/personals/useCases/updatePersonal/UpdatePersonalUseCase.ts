@@ -1,11 +1,12 @@
 import { injectable, inject } from 'tsyringe';
 
-import { Personal } from '@modules/personals/infra/typeorm/entities/Personal';
-import { IPersonalRepository } from '@modules/personals/repositories/IPersonalRepository';
 import { IHashProvider } from '@modules/users/providers/HashProvider/models/IHashProvider';
 import { IAddressRepository } from '@modules/users/repositories/IAddressRepository';
 import { IUserRepository } from '@modules/users/repositories/IUserRepository';
 import { AppError } from '@shared/errors/AppError';
+
+import { Personal } from '../../infra/typeorm/entities/Personal';
+import { IPersonalRepository } from '../../repositories/IPersonalRepository';
 
 interface IRequest {
   user_id: string;

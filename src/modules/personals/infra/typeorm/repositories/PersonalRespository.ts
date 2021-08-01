@@ -1,8 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 
-import { ICreatePersonalDTO } from '@modules/personals/dtos/ICreatePersonalDTO';
-import { IPersonalRepository } from '@modules/personals/repositories/IPersonalRepository';
-
+import { ICreatePersonalDTO } from '../../../dtos/ICreatePersonalDTO';
+import { IPersonalRepository } from '../../../repositories/IPersonalRepository';
 import { Personal } from '../entities/Personal';
 
 class PersonalRepository implements IPersonalRepository {

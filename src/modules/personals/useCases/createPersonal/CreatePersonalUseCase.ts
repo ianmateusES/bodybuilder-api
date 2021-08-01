@@ -14,7 +14,6 @@ interface IRequest {
   password: string;
   birthday: string;
   telephone: string;
-  user_type: 'personal';
   cref: string;
   street: string;
   number: number;
@@ -46,7 +45,6 @@ class CreatePersonalUseCase {
     password,
     birthday,
     telephone,
-    user_type,
     cref,
     street,
     number,
@@ -90,7 +88,7 @@ class CreatePersonalUseCase {
       password: hashedPassword,
       birthday: new Date(birthday),
       telephone,
-      user_type,
+      user_type: 'personal',
       address_id: address.id,
     });
 

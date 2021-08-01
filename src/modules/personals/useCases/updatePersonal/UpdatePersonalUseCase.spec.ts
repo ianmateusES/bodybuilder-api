@@ -46,7 +46,6 @@ describe('Update Personal', () => {
       password: '123456',
       telephone: '(85) 9 9988-6655',
       birthday: '1996-10-10',
-      user_type: 'personal',
       cref: '1122334455',
       street: 'Rua A',
       number: 100,
