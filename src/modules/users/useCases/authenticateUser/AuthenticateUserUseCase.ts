@@ -2,12 +2,15 @@ import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 
 import { jwt } from '@config/auth';
+import { Nutritionist } from '@modules/nutritionists/infra/typeorm/entities/Nutritionist';
+import { INutritionistRepository } from '@modules/nutritionists/repositories/INutritionistRepository';
 import { Personal } from '@modules/personals/infra/typeorm/entities/Personal';
 import { IPersonalRepository } from '@modules/personals/repositories/IPersonalRepository';
+import { Student } from '@modules/students/infra/typeorm/entities/Student';
+import { IStudentRepository } from '@modules/students/repositories/IStudentRepository';
 import { IHashProvider } from '@modules/users/providers/HashProvider/models/IHashProvider';
 import { AppError } from '@shared/errors/AppError';
 
-// import { User } from '../../infra/typeorm/entities/User';
 import { IUserRepository } from '../../repositories/IUserRepository';
 
 interface IRequest {
@@ -16,16 +19,20 @@ interface IRequest {
 }
 
 interface IResponse {
-  user: Personal;
+  user: Personal | Nutritionist | Student;
   token: string;
 }
 
 interface IRepositories {
   personal: IPersonalRepository;
+  nutritionist: INutritionistRepository;
+  student: IStudentRepository;
 }
 
-enum professionalEnum {
+enum specializationEnum {
   personal = 'personal',
+  nutritionist = 'nutritionist',
+  student = 'student',
 }
 
 @injectable()
@@ -40,8 +47,18 @@ class AuthenticateUserUseCase {
 
     @inject('PersonalRepository')
     private personalRepository: IPersonalRepository,
+
+    @inject('NutritionistRepository')
+    private nutritionistRepository: INutritionistRepository,
+
+    @inject('StudentRepository')
+    private studentRepository: IStudentRepository,
   ) {
-    this.repositories = { personal: this.personalRepository };
+    this.repositories = {
+      personal: this.personalRepository,
+      nutritionist: this.nutritionistRepository,
+      student: this.studentRepository,
+    };
   }
 
   public async execute({ email, password }: IRequest): Promise<IResponse> {
@@ -60,25 +77,25 @@ class AuthenticateUserUseCase {
       throw new AppError('Incorrect email/password combination.', 401);
     }
 
-    const professional = await this.repositories[
-      user.user_type as professionalEnum
+    const specialization = await this.repositories[
+      user.user_type as specializationEnum
     ].findById(user.professional_info_id);
 
-    if (!professional) {
+    if (!specialization) {
       throw new AppError('Specialization does not exist', 401);
     }
 
-    Object.assign(professional.user, { address: user.address });
+    Object.assign(specialization.user, { address: user.address });
 
     const { secret, expiresIn } = jwt;
 
     const token = sign({}, secret, {
-      subject: professional.id,
+      subject: specialization.id,
       expiresIn,
     });
 
     return {
-      user: professional,
+      user: specialization,
       token,
     };
   }
