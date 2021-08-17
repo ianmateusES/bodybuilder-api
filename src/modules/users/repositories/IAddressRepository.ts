@@ -5,6 +5,7 @@ interface IAddressRepository {
   findById(id: string): Promise<Address | undefined>;
   create(data: ICreateAddressDTO): Promise<Address>;
   save(address: Address): Promise<Address>;
+  delete(id: string): Promise<void>;
 }
 
 export { IAddressRepository };

@@ -1,6 +1,8 @@
 import '@modules/users/providers';
 import { container } from 'tsyringe';
 
+import { ExerciseRepository } from '@modules/exercises/infra/typeorm/repositories/ExerciseRepository';
+import { IExerciseRepository } from '@modules/exercises/repositories/IExerciseRepository';
 import { NutritionistRepository } from '@modules/nutritionists/infra/typeorm/repositories/NutritionistRepository';
 import { INutritionistRepository } from '@modules/nutritionists/repositories/INutritionistRepository';
 import { PersonalRepository } from '@modules/personals/infra/typeorm/repositories/PersonalRespository';
@@ -33,3 +35,8 @@ container.registerSingleton<IAddressRepository>(
 );
 
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
+
+container.registerSingleton<IExerciseRepository>(
+  'ExerciseRepository',
+  ExerciseRepository,
+);

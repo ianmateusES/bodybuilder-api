@@ -53,6 +53,10 @@ class AddressRepositoryInMemory implements IAddressRepository {
 
     return address;
   }
+
+  public async delete(id: string): Promise<void> {
+    this.addresses = this.addresses.filter(address => address.id !== id);
+  }
 }
 
 export { AddressRepositoryInMemory };

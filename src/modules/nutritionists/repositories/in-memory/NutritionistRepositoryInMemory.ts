@@ -20,11 +20,13 @@ class NutritionistRepositoryInMemory implements INutritionistRepository {
   public async findById(id: string): Promise<Nutritionist | undefined> {
     const nutritionist = this.nutritionists.find(
       nutritionist => nutritionist.id === id,
-    ) as Nutritionist;
+    );
 
-    const user = await this.usersRepository.findById(nutritionist.user_id);
+    if (nutritionist) {
+      const user = await this.usersRepository.findById(nutritionist.user_id);
 
-    Object.assign(nutritionist, { user });
+      Object.assign(nutritionist, { user });
+    }
 
     return nutritionist;
   }

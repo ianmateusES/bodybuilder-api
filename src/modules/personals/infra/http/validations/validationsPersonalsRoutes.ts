@@ -40,6 +40,7 @@ const putPersonalValidation = celebrate({
     }),
     birthday: Joi.date().required(),
     telephone: Joi.string().trim().required(),
+    cref: Joi.string().trim().required(),
     street: Joi.string().trim().required(),
     number: Joi.number().required(),
     district: Joi.string().trim().required(),
@@ -53,16 +54,8 @@ const deletePersonalValidation = celebrate({
   ...idValidation,
 });
 
-const postSessionValidation = celebrate({
-  [Segments.BODY]: {
-    email: Joi.string().email().required(),
-    password: Joi.string().required(),
-  },
-});
-
 export {
   postPersonalValidation,
   putPersonalValidation,
   deletePersonalValidation,
-  postSessionValidation,
 };

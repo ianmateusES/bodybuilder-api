@@ -10,7 +10,7 @@ import '@shared/infra/typeorm';
 import '@shared/container';
 
 import { AppError } from '../../errors/AppError';
-import { rateLimiter } from './middleware/rateLimiter';
+import { rateLimiter } from './middleware';
 import { routes } from './routes';
 
 const app = express();

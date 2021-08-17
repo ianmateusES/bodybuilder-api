@@ -18,13 +18,13 @@ class PersonalRepositoryInMemory implements IPersonalRepository {
   }
 
   public async findById(id: string): Promise<Personal | undefined> {
-    const personal = this.personals.find(
-      personal => personal.id === id,
-    ) as Personal;
+    const personal = this.personals.find(personal => personal.id === id);
 
-    const user = await this.usersRepository.findById(personal.user_id);
+    if (personal) {
+      const user = await this.usersRepository.findById(personal.user_id);
 
-    Object.assign(personal, { user });
+      Object.assign(personal, { user });
+    }
 
     return personal;
   }

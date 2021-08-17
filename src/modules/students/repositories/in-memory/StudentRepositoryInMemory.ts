@@ -18,11 +18,13 @@ class StudentRepositoryInMemory implements IStudentRepository {
   }
 
   public async findById(id: string): Promise<Student | undefined> {
-    const student = this.students.find(student => student.id === id) as Student;
+    const student = this.students.find(student => student.id === id);
 
-    const user = await this.usersRepository.findById(student.user_id);
+    if (student) {
+      const user = await this.usersRepository.findById(student.user_id);
 
-    Object.assign(student, { user });
+      Object.assign(student, { user });
+    }
 
     return student;
   }
