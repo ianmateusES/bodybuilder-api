@@ -7,6 +7,6 @@ import { personalsRoutes } from './personals.routes';
 const PersonalRoutes = Router();
 
 PersonalRoutes.use('/profile', personalsProfileRouter);
-PersonalRoutes.use('/list', personalsRoutes);
+PersonalRoutes.use('/admin', personalsRoutes);
 
 export { PersonalRoutes };

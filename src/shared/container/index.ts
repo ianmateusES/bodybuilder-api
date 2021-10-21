@@ -7,6 +7,8 @@ import { NutritionistRepository } from '@modules/nutritionists/infra/typeorm/rep
 import { INutritionistRepository } from '@modules/nutritionists/repositories/INutritionistRepository';
 import { PersonalRepository } from '@modules/personals/infra/typeorm/repositories/PersonalRespository';
 import { IPersonalRepository } from '@modules/personals/repositories/IPersonalRepository';
+import { StudentPersonalRepository } from '@modules/studentPersonal/infra/typeorm/repositories/StudentPersonalRepository';
+import { IStudentPersonalRepository } from '@modules/studentPersonal/repositories/IStudentPersonalRepository';
 import { StudentRepository } from '@modules/students/infra/typeorm/repositories/StudentRepository';
 import { IStudentRepository } from '@modules/students/repositories/IStudentRepository';
 import { AddressRepository } from '@modules/users/infra/typeorm/repositories/AddressRepository';
@@ -39,4 +41,9 @@ container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
 container.registerSingleton<IExerciseRepository>(
   'ExerciseRepository',
   ExerciseRepository,
+);
+
+container.registerSingleton<IStudentPersonalRepository>(
+  'StudentPersonalRepository',
+  StudentPersonalRepository,
 );

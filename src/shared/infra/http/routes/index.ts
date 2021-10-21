@@ -1,8 +1,9 @@
 import { Router } from 'express';
 
-import { ExerciseRoutes } from '@modules/exercises/infra/http/routes';
+import { ExercisesRoutes } from '@modules/exercises/infra/http/routes';
 import { NutritionistRoutes } from '@modules/nutritionists/infra/http/routes';
 import { PersonalRoutes } from '@modules/personals/infra/http/routes';
+import { StudentPersonalRoutes } from '@modules/studentPersonal/infra/http/routes';
 import { StudentRoutes } from '@modules/students/infra/http/routes';
 import { usersRoutes, sessionsRouter } from '@modules/users/infra/http/routes';
 
@@ -26,7 +27,8 @@ routes.use(ensureAuthenticated);
 
 // Personal routes
 routes.use('/personals', ensurePersonal, PersonalRoutes);
-routes.use('/exercises', ensurePersonal, ExerciseRoutes);
+routes.use('/personals/students', ensurePersonal, StudentPersonalRoutes);
+routes.use('/exercises', ensurePersonal, ExercisesRoutes);
 
 // Nutritionist routes
 routes.use('/nutritionists', ensureNutritionist, NutritionistRoutes);

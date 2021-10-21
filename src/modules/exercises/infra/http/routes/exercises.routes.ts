@@ -11,31 +11,31 @@ import {
   deleteExerciseValidation,
 } from '../validations/validationsExercisesRoutes';
 
-// http://localhost:3333/exercises/me
-const exercisesRoutes = Router();
+// http://localhost:3333/exercises
+const ExercisesRoutes = Router();
 const createExerciseController = new CreateExerciseController();
 const deleteExerciseController = new DeleteExerciseController();
 const listExercisesController = new ListExercisesController();
 const updateExercisesController = new UpdateExercisesController();
 
-exercisesRoutes.post(
+ExercisesRoutes.post(
   '/',
   postExerciseValidation,
   createExerciseController.handle,
 );
 
-exercisesRoutes.get('/', listExercisesController.handle);
+ExercisesRoutes.get('/', listExercisesController.handle);
 
-exercisesRoutes.put(
+ExercisesRoutes.put(
   '/:id',
   putExerciseValidation,
   updateExercisesController.handle,
 );
 
-exercisesRoutes.delete(
+ExercisesRoutes.delete(
   '/:id',
   deleteExerciseValidation,
   deleteExerciseController.handle,
 );
 
-export { exercisesRoutes };
+export { ExercisesRoutes };

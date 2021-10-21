@@ -4,6 +4,7 @@ import { Student } from '../infra/typeorm/entities/Student';
 interface IStudentRepository {
   findAll(): Promise<Student[]>;
   findById(id: string): Promise<Student | undefined>;
+  findByIds(ids: string[]): Promise<Student[]>;
   findByEmail(email: string): Promise<Student | undefined>;
   findByTelephone(telephone: string): Promise<Student | undefined>;
   create(data: ICreateStudentDTO): Promise<Student>;

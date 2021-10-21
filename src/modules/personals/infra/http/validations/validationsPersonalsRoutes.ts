@@ -25,7 +25,6 @@ const postPersonalValidation = celebrate({
 });
 
 const putPersonalValidation = celebrate({
-  ...idValidation,
   [Segments.BODY]: {
     name: Joi.string().trim().required(),
     email: Joi.string().email().required(),

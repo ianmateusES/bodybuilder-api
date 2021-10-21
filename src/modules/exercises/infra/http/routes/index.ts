@@ -1,10 +1,3 @@
-import { Router } from 'express';
+import { ExercisesRoutes } from './exercises.routes';
 
-import { exercisesRoutes } from './exercises.routes';
-
-// http://localhost:3333/exercises
-const ExerciseRoutes = Router();
-
-ExerciseRoutes.use('/me', exercisesRoutes);
-
-export { ExerciseRoutes };
+export { ExercisesRoutes };

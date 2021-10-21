@@ -1,13 +1,13 @@
-import 'reflect-metadata';
 import 'dotenv/config';
+import 'reflect-metadata';
 import 'express-async-errors';
+
+import '@shared/infra/typeorm';
+import '@shared/container';
 
 import { errors } from 'celebrate';
 import cors from 'cors';
 import express, { Request, Response, NextFunction } from 'express';
-
-import '@shared/infra/typeorm';
-import '@shared/container';
 
 import { AppError } from '../../errors/AppError';
 import { rateLimiter } from './middleware';

@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import { ListPersonalController } from '../../../useCases/listPersonal/ListPersonalController';
 
-// http://localhost:3333/personals/list
+// http://localhost:3333/personals/admin
 const personalsRoutes = Router();
 const listPersonalController = new ListPersonalController();
 

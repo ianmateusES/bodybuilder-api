@@ -10,7 +10,7 @@ import {
 
 import { Execution } from './Execution';
 
-@Entity('train')
+@Entity('trains')
 class Train {
   @ObjectIdColumn()
   id: ObjectID;
@@ -18,23 +18,11 @@ class Train {
   @Column()
   personal_id: string;
 
-  @OneToMany(() => Execution, execution => execution.train)
+  @OneToMany(() => Execution, execution => execution)
   execution: Execution[];
 
   @Column()
-  division: string;
-
-  @Column()
-  methodology: string;
-
-  @Column()
-  series: number;
-
-  @Column()
-  repetitions: number;
-
-  @Column()
-  comments: string;
+  objective: string;
 
   @CreateDateColumn()
   created_at: Date;

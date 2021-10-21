@@ -29,6 +29,12 @@ class StudentRepositoryInMemory implements IStudentRepository {
     return student;
   }
 
+  public async findByIds(ids: string[]): Promise<Student[]> {
+    const student = this.students.filter(student => ids.includes(student.id));
+
+    return student;
+  }
+
   public async findByEmail(email: string): Promise<Student | undefined> {
     const user = await this.usersRepository.findByEmail(email);
     const student = this.students.find(student => student.user_id === user?.id);

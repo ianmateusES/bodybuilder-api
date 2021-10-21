@@ -12,11 +12,11 @@ const postUserValidation = celebrate({
     cref_crn: Joi.when('user_type', [
       {
         is: 'personal',
-        then: Joi.string().trim().required(),
+        then: Joi.number().required(),
       },
       {
         is: 'nutritionist',
-        then: Joi.string().trim().required(),
+        then: Joi.number().required(),
       },
     ]),
     street: Joi.string().trim().required(),

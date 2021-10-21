@@ -1,8 +1,6 @@
 import { createConnections, getConnectionOptions } from 'typeorm';
 
 async function connection() {
-  // const postgresConnection = await getConnectionOptions();
-  // const mongoConnection = await getConnectionOptions('mongo');
   const [postgresConnection, mongoConnection] = await Promise.all([
     getConnectionOptions(),
     getConnectionOptions('mongo'),

@@ -1,3 +1,4 @@
+import { ExerciseRepositoryInMemory } from '@modules/exercises/repositories/in-memory/ExerciseRepositoryInMemory';
 import { HashProviderInMemory } from '@modules/users/providers/HashProvider/in-memory/HashProviderInMemory';
 import { AddressRepositoryInMemory } from '@modules/users/repositories/in-memory/AddressRepositoryInMemory';
 import { UserRepositoryInMemory } from '@modules/users/repositories/in-memory/UserRepositoryInMemory';
@@ -10,6 +11,7 @@ let personalRepositoryInMemory: PersonalRepositoryInMemory;
 let addressRepositoryInMemory: AddressRepositoryInMemory;
 let userRepositoryInMemory: UserRepositoryInMemory;
 let hashProviderInMemory: HashProviderInMemory;
+let exerciseRepositoryInMemory: ExerciseRepositoryInMemory;
 
 let createPersonalUseCase: CreatePersonalUseCase;
 let deletePersonalUseCase: DeletePersonalUseCase;
@@ -22,6 +24,7 @@ describe('Delete Personal', () => {
     personalRepositoryInMemory = new PersonalRepositoryInMemory(
       userRepositoryInMemory,
     );
+    exerciseRepositoryInMemory = new ExerciseRepositoryInMemory();
 
     createPersonalUseCase = new CreatePersonalUseCase(
       personalRepositoryInMemory,
@@ -33,6 +36,7 @@ describe('Delete Personal', () => {
     deletePersonalUseCase = new DeletePersonalUseCase(
       personalRepositoryInMemory,
       addressRepositoryInMemory,
+      exerciseRepositoryInMemory,
     );
   });
 

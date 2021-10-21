@@ -1,5 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
+import { IExerciseRepository } from '@modules/exercises/repositories/IExerciseRepository';
 import { IAddressRepository } from '@modules/users/repositories/IAddressRepository';
 import { AppError } from '@shared/errors/AppError';
 
@@ -17,6 +18,9 @@ class DeletePersonalUseCase {
 
     @inject('AddressRepository')
     private addressRepository: IAddressRepository,
+
+    @inject('ExerciseRepository')
+    private exerciseRepository: IExerciseRepository,
   ) {}
 
   public async execute({ personal_id }: IRequest): Promise<void> {
@@ -29,6 +33,7 @@ class DeletePersonalUseCase {
     await Promise.all([
       this.addressRepository.delete(personal.user.address_id),
       this.personalRepository.delete(personal_id),
+      this.exerciseRepository.deletePersonal(personal_id),
     ]);
   }
 }

@@ -1,4 +1,4 @@
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, In, Repository } from 'typeorm';
 
 import { ICreateStudentDTO } from '../../../dtos/ICreateStudentDTO';
 import { IStudentRepository } from '../../../repositories/IStudentRepository';
@@ -26,6 +26,15 @@ class StudentRepository implements IStudentRepository {
     });
 
     return student;
+  }
+
+  public async findByIds(ids: string[]): Promise<Student[]> {
+    const students = await this.ormRepository.find({
+      relations: ['user'],
+      where: { id: In(ids) },
+    });
+
+    return students;
   }
 
   public async findByEmail(email: string): Promise<Student | undefined> {
